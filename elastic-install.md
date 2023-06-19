@@ -41,3 +41,6 @@ Login to Kibana on your browser from the following link:
 
 On the first time launch, you will need to login and then Kibana will prompt you for the enrollment token.  This token is only good for 30 minutes.  If you take longer than that, you will need to create a new token.  See here for more details on that.
 > https://www.elastic.co/guide/en/elasticsearch/reference/current/create-enrollment-token.html
+
+## Test connection to your Elastic Server
+> curl --cacert http_ca.crt -u "elastic:<elastic-password>" https://localhost:9200
