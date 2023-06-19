@@ -44,3 +44,6 @@ On the first time launch, you will need to login and then Kibana will prompt you
 
 ## Test connection to your Elastic Server
 > curl --cacert http_ca.crt -u "elastic:<elastic-password>" https://localhost:9200
+
+## Elastic Nodejs Coding
+> https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/client-connecting.html
