@@ -1,0 +1,2 @@
+curl -XGET https://api.elastic-cloud.com/api/v1/users/auth/keys \
+-H "Authorization: ApiKey $EC_API_KEY"

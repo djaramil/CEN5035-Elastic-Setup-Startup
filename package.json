@@ -1,0 +1,15 @@
+{
+  "name": "elastic8-cloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "elastic-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.8.0",
+    "esmain": "github:elastic/elasticsearch-js"
+  }
+}
