@@ -1,15 +1,15 @@
 {
-  "name": "elastic8-cloud",
+  "name": "elastic-search-sample-nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "elastic-test.js",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@elastic/elasticsearch": "^8.8.0",
-    "esmain": "github:elastic/elasticsearch-js"
-  }
+  "license": "ISC"
 }

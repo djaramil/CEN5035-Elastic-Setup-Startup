@@ -23,7 +23,6 @@ curl \
 https://my-deployment-1ed11c.es.eastus2.azure.elastic-cloud.com/game-of-thrones?pretty
 
 
-
 Importing Shakespeare Data
 #create mapping
 curl -H "Content-Type: application/json" -XPUT 127.0.0.1:9200/shakespeare --data-binary @shakes-mapping.json
