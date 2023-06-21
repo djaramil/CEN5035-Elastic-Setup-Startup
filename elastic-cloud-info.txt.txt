@@ -1,0 +1,42 @@
+API Key - Management/ Stack Management / Security / API Keys
+https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restful-api-authentication.html#ece-api-keys  (didn't work)
+RmZYZXRZZ0JZNFBKamlPeHNhcXo6UGk2a2VGRFRURk9TSFFyN0JBcW9RQQ==
+
+
+https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html#:~:text=The%20API%20key%20needs%20to%20be%20supplied%20in,request%2C%20in%20the%20following%20format%3A%20Authorization%3A%20ApiKey%20%24EC_API_KEY  (worked)
+
+Deployment / Manage / Features / API Key
+curl_api_key - QlZyTXRZZ0JGekJxaHhUWjdrUGs6b09pWDhmbGZRNWl2VV9hS1ZlOVJ6UQ==
+
+Elastic Info
+curl -XGET 127.0.0.1:9200
+curl -H "Authorization: ApiKey RmZYZXRZZ0JZNFBKamlPeHNhcXo6UGk2a2VGRFRURk9TSFFyN0JBcW9RQQ==" -XGET  https://my-deployment-1ed11c.es.eastus2.azure.elastic-cloud.com
+
+Elastic Indices (worked)
+curl \
+-H "Authorization: ApiKey RmZYZXRZZ0JZNFBKamlPeHNhcXo6UGk2a2VGRFRURk9TSFFyN0JBcW9RQQ==" \
+https://my-deployment-1ed11c.es.eastus2.azure.elastic-cloud.com/_cat/indices?v
+
+View Game of Throne index (worked)
+curl \
+-H "Authorization: ApiKey RmZYZXRZZ0JZNFBKamlPeHNhcXo6UGk2a2VGRFRURk9TSFFyN0JBcW9RQQ==" \
+https://my-deployment-1ed11c.es.eastus2.azure.elastic-cloud.com/game-of-thrones?pretty
+
+
+
+Importing Shakespeare Data
+#create mapping
+curl -H "Content-Type: application/json" -XPUT 127.0.0.1:9200/shakespeare --data-binary @shakes-mapping.json
+
+# Index/import  data to Elasticsearch
+curl -H "Content-Type: application/json" -XPUT '127.0.0.1:9200/shakespeare/_bulk' --data-binary @shakespeare_8.0.json
+
+# Try searching a phrase
+curl -H "Content-Type: application/json" -XGET '127.0.0.1:9200/shakespeare/_search?pretty' -d '
+{
+"query" : {
+"match_phrase" : {
+"text_entry" : "to be or not to be"
+}
+}
+}' 
