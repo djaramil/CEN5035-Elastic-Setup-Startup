@@ -1,3 +1,6 @@
+username,password 
+elastic,9mfUNsR2HncI2XXXPL4Nj5E2
+
 API Key - Management/ Stack Management / Security / API Keys
 https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restful-api-authentication.html#ece-api-keys  (didn't work)
 RmZYZXRZZ0JZNFBKamlPeHNhcXo6UGk2a2VGRFRURk9TSFFyN0JBcW9RQQ==
