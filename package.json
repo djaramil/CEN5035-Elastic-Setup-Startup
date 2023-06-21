@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "@elastic/elasticsearch": "^8.8.1",
     "dotenv": "^16.3.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "jest"
   },
