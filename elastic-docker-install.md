@@ -43,7 +43,7 @@ On the first time launch, you will need to login and then Kibana will prompt you
 > https://www.elastic.co/guide/en/elasticsearch/reference/current/create-enrollment-token.html
 
 ## Test connection to your Elastic Server
-> curl --cacert http_ca.crt -u "elastic:<elastic-password>" https://localhost:9200
+> curl --cacert http_ca.crt -u "elastic:elastic-password" https://localhost:9200
 
 ## Elastic Nodejs Coding
 > https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/introduction.html

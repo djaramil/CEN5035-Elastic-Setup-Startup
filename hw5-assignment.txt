@@ -1,0 +1,50 @@
+HW5 - End to End Solution using Elastic search
+
+Purpose of this assignment is to create an end to end solution by experiencing both local and cloud versions of Elastic Search.
+
+You will start by installing and setting up the docker version of elastic and registering for the cloud version of elastic.
+After that you will go through and start inserting data with the code samples provided and verify that the setup is working 
+appropriately.
+
+Next, you will import the shakespeare dataset into both environments and then you will create and enpoint that will let you 
+query/search for a phrase and return a list of results and display the speaker, play_name, line_id and speech_number.
+
+Next, you will create a small HTML/CSS/Bootrap UI that shows a small page header and has an input field with a search button.
+Allow the user to enter any text and then when the search button is clicked the page will call the api and then display the 
+results in table form.
+
+Use the following repo/readme as a guide and starting point for setting up the Elastic Search environments and take the appropriate parts 
+from Student Server project for the API and frontend.   For those that want to use Python, you can use the FastAPI project instead, however, 
+you will need to setup your own starter code and you can use this https://elasticsearch-py.readthedocs.io/en/v8.8.1/ as a starting point for 
+setting things up.
+
+This assignment is your warmup for the final project.  You can work/help each other within your teams for this assignment but you will each 
+individually make your own submission and must be your own code.
+
+
+Objective 0. (10 points)
+Accept the invite for the GitHub Classroom assignment and clone the repo: https://classroom.github.com/a/S2ts1Q6u
+Create a README.md in the repository and write your name and Z number at the top of the file
+Stage/Add, Commit, and Push the file to GitHub.  You must have make commits as you go through
+the development of your homework
+
+Objective 1.  (15 points)
+Install Elastic Search Docker and run Game of Thrones sample code
+
+Objective 2. (15 points)
+Register and configure Elastic Search Cloud and run Game of Thrones sample code
+
+Objective 3. (20 points)
+Pick one of the two above environments and import/ingest Shakespeare data and show an elastic query using curl showing that you can access the data.
+
+Objective 4. (20 points)
+Create application search API using NodeJS or Python FastAPI or Flask and use curl or postman to show the api is working.
+
+Objective 5. (20 points)
+Create a small HTML/CSS/Bootrap UI that shows a small page header and has an input field with a search button.
+Allow the user to enter any text and then when the search button is clicked the page will call the api and then display the 
+results in table form.
+
+Extra Credit - Advanced. (50 points)
+Add option to the app that lets you select the name of the play - List of plays must be dynamically queried from the database and you must add an endpoint for this query.  (25 points).
+Otherwise, hard code the list of the plays and add another endpoint that let's you search by the play name and it returns all the text from the play and display the line# and speaker in each line. (25 points)

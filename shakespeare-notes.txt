@@ -15,3 +15,12 @@ curl -H "Content-Type: application/json" -XGET '127.0.0.1:9200/shakespeare/_sear
         }
     }
 }' 
+
+
+curl -H "Content-Type: application/json" -H "Authorization: ApiKey <API Key> \ 
+-XPUT https://my-deployment-1ed11c.es.eastus2.azure.elastic-cloud.com/shakespeare --data-binary @shakes-mapping.json
+
+curl -H "Content-Type: application/json" -XPUT '127.0.0.1:9200/shakespeare/_bulk' --data-binary @shakespeare_8.0.json
+
+curl -H "Content-Type: application/json" -H "Authorization: ApiKey <API Key> \
+-XPUT https://my-deployment-1ed11c.es.eastus2.azure.elastic-cloud.com/shakespeare/_bulk --data-binary @shakespeare_8.0.json

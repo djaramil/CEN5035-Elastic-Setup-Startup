@@ -19,4 +19,8 @@ For the cloud version:
 For the docker version:
 > elastic-test-local.js
 
+Don't forget to install the elastic search node library and verify that you got version 8.8.1
+and tested this code using node version v20.2.0
+> npm install @elastic/elasticsearch
+
 Notes on how to import shakespeare data to elastic [shakespeare-notes.txt](shakespeare-notes.txt)
