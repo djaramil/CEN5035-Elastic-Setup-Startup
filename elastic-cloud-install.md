@@ -4,6 +4,8 @@
 
 Register/setup at this link:  https://ela.st/highered
 
+> ** Do not use SSO to register with your FAU id.  Give it your FAU id and makeup a password **
+
 Once registered, make sure you copy the elastic userid and password.
 Userid will be `elastic`
 
