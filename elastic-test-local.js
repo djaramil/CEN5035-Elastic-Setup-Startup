@@ -4,10 +4,10 @@ const fs = require('fs')
 
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({
-  node: 'https://localhost:9200',
+  node: process.env.elastic_server,
   auth: {
-    username: 'elastic',
-    password: 'tjk5U015pG-GQU5Fu39N'
+    username: process.env.elastic_userid,
+    password: process.env.elastic_password
   },
   tls: {
     ca: fs.readFileSync('./http_ca.crt'),
@@ -16,44 +16,58 @@ const client = new Client({
 })
 
 async function run() {
-  // Let's start by indexing some data
-  await client.index({
-    index: 'game-of-thrones',
-    document: {
-      character: 'Ned Stark',
-      quote: 'Winter is coming.'
-    }
-  })
 
-  await client.index({
+  // Let's start by deleting the index if it exists
+  await client.indices.delete({
     index: 'game-of-thrones',
-    document: {
-      character: 'Daenerys Targaryen',
-      quote: 'I am the blood of the dragon.'
-    }
-  })
+  }).then(function (resp) {
+    console.log("Successfully deleted index!");
+  }, function (err) {
+    console.log("Index not present");
+  });
 
-  await client.index({
-    index: 'game-of-thrones',
-    document: {
-      character: 'Tyrion Lannister',
-      quote: 'A mind needs books like a sword needs a whetstone.'
-    }
-  })
+  // Specify the path to your JSON file
+  const filePath = 'game-of-thrones-quotes.json';
 
-  // here we are forcing an index refresh, otherwise we will not
-  // get any result in the consequent search
-  await client.indices.refresh({ index: 'game-of-thrones' })
+  try {
+    // Read the contents of the JSON file
+    const data = fs.readFileSync(filePath, 'utf8');
+
+    // Parse the JSON data
+    const jsonData = JSON.parse(data);
+
+    // Loop through the JSON data
+    for (const item of jsonData) {
+      // Access individual properties or perform operations on each item
+      console.log(item);
+
+      await client.index({
+        index: 'game-of-thrones',
+        body: {
+          character: item.character,
+          quote: item.quote
+        }
+      });
+    }
+  } catch (err) {
+    console.error('Error reading or parsing JSON data:', err);
+  }
+
+  // Here we are forcing an index refresh, otherwise we will not
+  // get any result in the subsequent search
+  await client.indices.refresh({ index: 'game-of-thrones' });
 
   // Let's search!
   const result = await client.search({
     index: 'game-of-thrones',
-    query: {
-      match: { quote: 'winter' }
+    body: {
+      query: {
+        match: { quote: 'winter' }
+      }
     }
-  })
+  });
 
-  console.log(result.hits.hits)
+  console.log(result.hits.hits);
 }
 
-run().catch(console.log)
+run().catch(console.log);

@@ -1,0 +1,63 @@
+<!-- Updated HTML code -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game of Thrones Quote Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle form submission
+            $('#searchForm').submit(function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get search query values
+                var field = $('#field').val();
+                var query = $('#query').val();
+
+                // Perform search request
+                $.ajax({
+                    url: '/search',
+                    type: 'POST',
+                    data: { field: field, query: query },
+                    success: function (data) {
+                        // Clear previous results
+                        $('#results').empty();
+
+                        if (data.length > 0) {
+                            // Display search results
+                            data.forEach(function (result) {
+                                $('#results').append('<li>Character: ' + result.character + ', Quote: ' + result.quote + '</li>');
+                            });
+                        } else {
+                            // Display no results message
+                            $('#results').append('<li>No results found</li>');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error occurred during the search:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Game of Thrones Quote Search</h1>
+    <form id="searchForm">
+        <label for="field">Search Field:</label>
+        <select id="field" name="field" required>
+            <option value="character">Character</option>
+            <option value="quote">Quote</option>
+        </select>
+        <br>
+        <label for="query">Query:</label>
+        <input type="text" id="query" name="query" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    <ul id="results"></ul>
+</body>
+
+</html>

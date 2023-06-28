@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game of Thrones Quote Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle form submission
+            $('#searchForm').submit(function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get search query values
+                var character = $('#character').val();
+                var quote = $('#quote').val();
+
+                // Perform search request
+                $.ajax({
+                    url: '/search',
+                    type: 'GET',
+                    data: { character: character, quote: quote },
+                    success: function (data) {
+                        // Clear previous results
+                        $('#results').empty();
+
+                        // Display search results
+                        data.forEach(function (result) {
+                            $('#results').append('<li>Character: ' + result.character + ', Quote: ' + result.quote + '</li>');
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error occurred during the search:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Game of Thrones Quote Search</h1>
+    <form id="searchForm">
+        <label for="character">Character:</label>
+        <input type="text" id="character" name="character" required>
+        <br>
+        <label for="quote">Quote:</label>
+        <input type="text" id="quote" name="quote" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    <ul id="results"></ul>
+</body>
+
+</html>
