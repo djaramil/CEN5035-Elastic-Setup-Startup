@@ -1,10 +1,12 @@
-<!-- Updated HTML code -->
+<!-- Updated HTML code with query and search field side by side -->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Game of Thrones Quote Search</title>
+    <title>Elasticsearch Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
             // Handle form submission
@@ -25,8 +27,10 @@
                         $('#results').empty();
 
                         if (data.length > 0) {
+                            // Create table
+                            var table = $('<table>').addClass('table table-bordered');
+
                             // Create table header
-                            var table = $('<table>');
                             var headerRow = $('<tr>');
                             headerRow.append($('<th>').text('Character'));
                             headerRow.append($('<th>').text('Quote'));
@@ -57,20 +61,24 @@
 </head>
 
 <body>
-    <h1>Game of Thrones Quote Search</h1>
+    <h1>Elasticsearch Search</h1>
     <form id="searchForm">
-        <label for="field">Search Field:</label>
-        <select id="field" name="field" required>
-            <option value="character">Character</option>
-            <option value="quote">Quote</option>
-        </select>
-        <br>
-        <label for="query">Query:</label>
-        <input type="text" id="query" name="query" required>
-        <br>
-        <input type="submit" value="Search">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="field">Search Field:</label>
+                <select id="field" name="field" class="form-control" required>
+                    <option value="character">Character</option>
+                    <option value="quote">Quote</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="query">Query:</label>
+                <input type="text" id="query" name="query" class="form-control" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    <ul id="results"></ul>
+    <div id="results"></div>
 </body>
 
 </html>
