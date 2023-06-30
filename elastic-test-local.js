@@ -13,7 +13,7 @@ const client = new Client({
     ca: fs.readFileSync('./http_ca.crt'),
     rejectUnauthorized: false
   }
-})
+}) 
 
 async function run() {
   // Let's start by indexing some data
