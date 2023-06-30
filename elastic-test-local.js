@@ -7,7 +7,7 @@ const client = new Client({
   node: 'https://localhost:9200',
   auth: {
     username: 'elastic',
-    password: 'tjk5U015pG-GQU5Fu39N'
+    password: 'BuRL*t+YY6S0I+s2q7kT'
   },
   tls: {
     ca: fs.readFileSync('./http_ca.crt'),
